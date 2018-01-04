@@ -37,13 +37,14 @@ def check_special_chars(password):
 
 
 def get_password_strength(password):
-    return (
-        int(get_passsword_lenght(password)) +
-        int(check_upper_chars(password)) +
-        int(check_lower_chars(password)) +
-        int(check_digits(password)) +
+    score = sum([
+        int(get_passsword_lenght(password)),
+        int(check_upper_chars(password)),
+        int(check_lower_chars(password)),
+        int(check_digits(password)),
         int(check_special_chars(password))
-        )
+        ])
+    return score
 
 
 if __name__ == '__main__':
