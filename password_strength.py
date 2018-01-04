@@ -1,22 +1,49 @@
 import re
 
 
-def get_password_strength(password):
-    score = 0
-    if len(password) == 1:
-        score +=1
-        return score
+def get_passsword_lenght(password):
     if len(password) > 6:
-        score += 2
+        return 2
+    else:
+        return 0
+
+
+def check_upper_chars(password):
     if re.search('[A-Z]', password):
-        score += 2
+        return 2
+    else:
+        return 0
+
+
+def check_lower_chars(password):
     if re.search('[a-z]', password):
-        score += 2
+        return 2
+    else:
+        return 0
+
+
+def check_digits(password):
     if re.search('\d', password):
-        score += 2
+        return 2
+    else:
+        return 0
+
+
+def check_special_chars(password):
     if re.search('[^A-Za-z\d]', password):
-        score += 2
-    return score
+        return 2
+    else:
+        return 0
+
+
+def get_password_strength(password):
+    return (
+        int(get_passsword_lenght(password)) +
+        int(check_upper_chars(password)) +
+        int(check_lower_chars(password)) +
+        int(check_digits(password)) +
+        int(check_special_chars(password))
+        )
 
 
 if __name__ == '__main__':
@@ -24,7 +51,10 @@ if __name__ == '__main__':
     while len(password) == 0:
         print('Password must be at least 1 characters long!')
         password = input('Please enter password: ')
-    print('Your password strength is: {}'.format(get_password_strength(password)))
+    if len(password) == 1:
+        print('Your password strength is: 1')
+    else:
+        print('Your password strength is: {}'.format(get_password_strength(password)))
 
 
 
