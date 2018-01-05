@@ -21,7 +21,7 @@ Password scores:
 Example of script launch on Linux, Python 3.5:
 ```
 $ python password_strenght.py
-Please enter password: Qwerty1@
+Please enter password:
 Your password strength is: 10
 ```
 
